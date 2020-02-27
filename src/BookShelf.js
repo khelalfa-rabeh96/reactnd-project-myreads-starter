@@ -26,7 +26,7 @@ const BookShelf = (props) => {
 							With the Parent Component Callback 
 					    */}
 						<Book book={book} onChangeBookShelf={onChangeBookShelf}/>
-						}
+						
 					</li>
 				))}
 				</ol>
