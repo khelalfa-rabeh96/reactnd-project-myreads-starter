@@ -19,7 +19,7 @@ const BookShelf = (props) => {
 
 			{/* Map through books to create a Book Component for each book */}
 				{booksUponShelf.map((book) => (
-					<li>
+					<li key={book.id}>
 						{/* Pass a book as prop for Book Component
 							And pass onChangeBookShelf method that allow us 
 							To change witch  shelf a book it's on 
