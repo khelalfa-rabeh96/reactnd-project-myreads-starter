@@ -1,5 +1,4 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 import BookShelf from './BookShelf';
@@ -75,7 +74,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <SearchPage onShowSearchPage={this.showSearchPage}/> 
+          <SearchPage onShowSearchPage={this.showSearchPage} onMoveBook={this.moveBook}/> 
         ) : (
           <div className="list-books">
             <div className="list-books-title">
