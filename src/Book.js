@@ -19,7 +19,7 @@ const Book = (props) => {
       <div className="book">
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.cover_url})` }}></div>
-          <ShelfChanger onChangeCurrentShelf={changeCurrentShelf}/>
+          <ShelfChanger onChangeCurrentShelf={changeCurrentShelf} shelf={book.shelf}/>
         </div>
 
         <div className="book-title">{book.title}</div>

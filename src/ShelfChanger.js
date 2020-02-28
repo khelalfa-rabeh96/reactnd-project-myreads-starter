@@ -5,10 +5,17 @@ class ShelfChanger extends Component {
 
 	static propTypes = {
 		onChangeCurrentShelf: PropTypes.func.isRequired,
+		shelf: PropTypes.string.isRequired,
 	}
 
 	state = {
-		selected:"move",
+		selected:"",
+	}
+
+	componentDidMount = () => {
+		this.setState(() => ({
+			selected: this.props.shelf,
+		}))
 	}
 
 	// Handle the select option and 
