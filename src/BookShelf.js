@@ -6,7 +6,7 @@ import Book from './Book';
 const BookShelf = (props) => {
 
 	// Destructuring  props' values
-	const  {books, shelf, onChangeBookShelf } = props;
+	const  {books, shelf, onMoveBook } = props;
 
 	// get the only books that match the shelf
 	const booksUponShelf = books.filter((book) => book.shelf === shelf);
@@ -25,7 +25,7 @@ const BookShelf = (props) => {
 							To change witch  shelf a book it's on 
 							With the Parent Component Callback 
 					    */}
-						<Book book={book} onChangeBookShelf={onChangeBookShelf}/>
+						<Book book={book} onMoveBook={onMoveBook}/>
 						
 					</li>
 				))}
@@ -38,7 +38,7 @@ const BookShelf = (props) => {
 BookShelf.propTypes={
 	books: PropTypes.array.isRequired,
 	shelf: PropTypes.string.isRequired,
-	onChangeBookShelf: PropTypes.func.isRequired,
+	onMoveBook: PropTypes.func.isRequired,
 }
 
 export default BookShelf;

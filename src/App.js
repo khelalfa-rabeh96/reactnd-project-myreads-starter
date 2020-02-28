@@ -40,7 +40,10 @@ class BooksApp extends React.Component {
     ]
   }
 
-  changeBookShelf = (bookId, shelf) => {
+  // This method will move a book from a shelf to another one 
+  // By update the shelf property or delete it in case 
+  // If it's not on any shelf 
+  moveBook = (bookId, shelf) => {
     if(shelf === 'none'){
       this.deleteBook(bookId)
     }else{
@@ -52,6 +55,8 @@ class BooksApp extends React.Component {
     }
   }
 
+  // This method use to delete the book  in case if user select None Option 
+  // From the option list of the book
   deleteBook = (bookId) => {
     this.setState((prevState) => ({
       books: prevState.books.filter((book) => book.id !== bookId)
@@ -89,9 +94,17 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                <BookShelf books={this.state.books} shelf={"currentlyReading"} onChangeBookShelf={this.changeBookShelf}/>
-                <BookShelf books={this.state.books} shelf={"wantToRead"} onChangeBookShelf={this.changeBookShelf}/>
-                <BookShelf books={this.state.books} shelf={"read"} onChangeBookShelf={this.changeBookShelf}/>
+                {/* Pass books to can filter the books ,
+                    each for it's shelf with book's shelf property 
+                    and BookShelf's shelf prop 
+
+                    Pass a changeBookShelf method as a prop to can
+                    Update a specific book that on the other hand will 
+                    Update the state from the childs components
+                */}
+                <BookShelf books={this.state.books} shelf={"currentlyReading"} onMoveBook={this.moveBook}/>
+                <BookShelf books={this.state.books} shelf={"wantToRead"} onMoveBook={this.moveBook}/>
+                <BookShelf books={this.state.books} shelf={"read"} onMoveBook={this.moveBook}/>
                 
               </div>
             </div>

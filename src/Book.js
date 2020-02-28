@@ -9,9 +9,10 @@ const Book = (props) => {
   const {book} = props;
 
  
-
+  // This function will call the parent Callback to change a book 
+  // Depend on the new shelf that it will be on
   const changeCurrentShelf = (shelf) => {
-    props.onChangeBookShelf(book.id, shelf)
+    props.onMoveBook(book.id, shelf)
   }
 
   return(
@@ -29,7 +30,7 @@ const Book = (props) => {
 
 Book.propTypes={
   book: PropTypes.object.isRequired,
-  onChangeBookShelf: PropTypes.func.isRequired,
+  onMoveBook: PropTypes.func.isRequired,
 }
 
 export default Book;
