@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 
 import * as BooksAPI from './BooksAPI'
 import SearchBookInput from './SearchBookInput';
-import BookShelf from './BookShelf';
+import BooksGrid from './BooksGrid';
 
 class SearchPage extends Component {
 
@@ -61,7 +61,7 @@ class SearchPage extends Component {
               
             </div>
             <div className="search-books-results">
-              <BookShelf books={this.state.results} shelf={'none'} onMoveBook={this.props.onMoveBook}/>
+              <BooksGrid books={this.state.results}  onMoveBook={this.props.onMoveBook}/>
             </div>
           </div>
 		)
