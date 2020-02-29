@@ -5,7 +5,7 @@ class ShelfChanger extends Component {
 
 	static propTypes = {
 		onChangeCurrentShelf: PropTypes.func.isRequired,
-		shelf: PropTypes.string.isRequired,
+		shelf: PropTypes.string,
 	}
 
 	state = {
@@ -13,9 +13,14 @@ class ShelfChanger extends Component {
 	}
 
 	componentDidMount = () => {
-		this.setState(() => ({
-			selected: this.props.shelf,
-		}))
+		// Check if the book has a shelf put it as the selected value
+		// none instead
+		const shelf = this.props.shelf ? this.props.shelf : 'none';
+		if(shelf){
+			this.setState(() => ({
+				selected: shelf ,
+			}))
+		}		
 	}
 
 	// Handle the select option and 
