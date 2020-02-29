@@ -25,7 +25,6 @@ class BooksApp extends React.Component {
        this.setState(() => ({
           books: books
         }))
-       console.log(books)
       })
     
   }
@@ -39,13 +38,14 @@ class BooksApp extends React.Component {
   // This method will move a book from a shelf to another one 
   // By update the shelf property or delete it in case 
   // If it's not on any shelf 
-  moveBook = (bookId, shelf) => {
+  moveBook = (book, shelf) => {
+    BooksAPI.update(book, shelf);
     if(shelf === 'none'){
-      this.deleteBook(bookId)
+      this.deleteBook(book)
     }else{
       this.setState((prevState) => ({
-        books: prevState.books.filter((book) => {
-          return book = book.id === bookId ? (book.shelf = shelf) : book;
+        books: prevState.books.filter((b) => {
+          return b = b.id === book.id ? (b.shelf = shelf) : b;
         })
       }))
     }
@@ -53,9 +53,9 @@ class BooksApp extends React.Component {
 
   // This method use to delete the book  in case if user select None Option 
   // From the option list of the book
-  deleteBook = (bookId) => {
+  deleteBook = (book) => {
     this.setState((prevState) => ({
-      books: prevState.books.filter((book) => book.id !== bookId)
+      books: prevState.books.filter((b) => b.id !== book.id)
     }))
   }
 
