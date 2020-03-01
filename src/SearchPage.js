@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import {Link} from 'react-router-dom'
 
 import * as BooksAPI from './BooksAPI'
 
@@ -80,11 +81,8 @@ class SearchPage extends Component {
 		return(
 			 <div className="search-books">
             <div className="search-books-bar">
-              <button className="close-search" onClick={this.props.onShowSearchPage}>Close</button>
-              {this.state.allBooks && (
-              	<SearchBookInput onHandleSearch={this.handleSearch}/>
-              	)}
-              
+              <Link to="/"><button className="close-search" >Close</button></Link>
+          	  <SearchBookInput onHandleSearch={this.handleSearch}/>
             </div>
             <div className="search-books-results">
               <BooksGrid books={this.state.allBooks}  onMoveBook={this.props.onMoveBook}/>

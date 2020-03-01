@@ -1,7 +1,7 @@
 import React from 'react'
+import {Route, Link} from 'react-router-dom'
 import './App.css'
 import * as BooksAPI from './BooksAPI'
-
 import BookShelf from './BookShelf';
 import SearchPage from './SearchPage';
 
@@ -63,34 +63,40 @@ class BooksApp extends React.Component {
     console.log(this.state.books);
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-          <SearchPage onShowSearchPage={this.showSearchPage} onMoveBook={this.moveBook} books={this.state.books}/> 
-        ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                {/* Pass books to can filter the books ,
-                    each for it's shelf with book's shelf property 
-                    and BookShelf's shelf prop 
+       
+          <Route  path="/search" render={() => (
+             <SearchPage onShowSearchPage={this.showSearchPage} onMoveBook={this.moveBook} books={this.state.books}/> 
+           )}/ > 
+          
 
-                    Pass a changeBookShelf method as a prop to can
-                    Update a specific book that on the other hand will 
-                    Update the state from the childs components
-                */}
-                <BookShelf books={this.state.books} shelf={"currentlyReading"} onMoveBook={this.moveBook}/>
-                <BookShelf books={this.state.books} shelf={"wantToRead"} onMoveBook={this.moveBook}/>
-                <BookShelf books={this.state.books} shelf={"read"} onMoveBook={this.moveBook}/>
-                
+          <Route exact path="/" render={() => (
+             <div className="list-books">
+                <div className="list-books-title">
+                  <h1>MyReads</h1>
+                </div>
+                <div className="list-books-content">
+                  <div>
+                    {/* Pass books to can filter the books ,
+                        each for it's shelf with book's shelf property 
+                        and BookShelf's shelf prop 
+
+                        Pass a changeBookShelf method as a prop to can
+                        Update a specific book that on the other hand will 
+                        Update the state from the childs components
+                    */}
+                    <BookShelf books={this.state.books} shelf={"currentlyReading"} onMoveBook={this.moveBook}/>
+                    <BookShelf books={this.state.books} shelf={"wantToRead"} onMoveBook={this.moveBook}/>
+                    <BookShelf books={this.state.books} shelf={"read"} onMoveBook={this.moveBook}/>
+                    
+                  </div>
+                </div>
+                <div className="open-search">
+                  <Link to="/search"><button>Add a book</button></Link>
+                </div>
               </div>
-            </div>
-            <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
-            </div>
-          </div>
-        )}
+           )}/>
+          
+        
       </div>
     )
   }
