@@ -19,8 +19,7 @@ class BooksApp extends React.Component {
     books: []
   }
   
-  componentDidMount =() => {
-    console.log(BooksAPI.getAll())
+  componentDidMount = () => {
     BooksAPI.getAll().then(books => {
        this.setState(() => ({
           books: books
@@ -43,12 +42,12 @@ class BooksApp extends React.Component {
     if(shelf === 'none'){
       this.deleteBook(book)
     }else{
+      book.shelf = shelf;
       this.setState((prevState) => ({
-        books: prevState.books.filter((b) => {
-          return b = b.id === book.id ? (b.shelf = shelf) : b;
-        })
+        books: prevState.books.filter(b => b.id !== book.id).concat(book)
       }))
     }
+    console.log(this.state.books);
   }
 
   // This method use to delete the book  in case if user select None Option 
