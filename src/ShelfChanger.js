@@ -27,6 +27,7 @@ class ShelfChanger extends Component {
 	// Call the parent call back to change the book shelf
 	hendleSelectShelf = (event) => {
 	    const shelf = event.target.value;
+	    this.setState({selected: shelf});
 	    this.props.onChangeCurrentShelf(shelf);
 	}
 
